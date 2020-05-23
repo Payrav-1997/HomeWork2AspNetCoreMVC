@@ -85,5 +85,29 @@ namespace Leson2AspNetCoreMVC.Controllers
 
         }
 
+        public IActionResult SelectFullName()
+        {
+
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult SearchFullName(string LastName, string FirstName, string MiddleName)
+        {
+            try
+            {
+                using (IDbConnection db = new SqlConnection(conString))
+                {
+                    var personListbyFullName = db.Query<Person>($"SELECT * FROM PERSON  WHERE LastName like '%{LastName}%' AND FirstName like '%{FirstName}%' AND MiddleName like '%{MiddleName}%' ").ToList();
+                    return View(personListbyFullName);
+                }
+            }
+            catch
+            {
+
+            }
+            return View(null);
+        }
+
     }
 }
