@@ -43,7 +43,7 @@ namespace Leson2AspNetCoreMVC.Controllers
         }
 
 
-        [HttpGet]
+        [HttpPost]
         public IActionResult Add(string LastName, string FirstName, string MiddleName)
         {
             var person = new Person()
@@ -54,10 +54,36 @@ namespace Leson2AspNetCoreMVC.Controllers
             };
             using(IDbConnection db = new SqlConnection(conString))
             {
-                db.Execute("INSERT INTO PERSON([LastName],[FirstName],[MiddleName])+" +
-                    $"VALUES'{person.LastName}','{person.FirstName}','{person.MiddleName}'");         
+                db.Execute("INSERT INTO PERSON([LastName],[FirstName],[MiddleName])" +
+                $"VALUES('{person.LastName}','{person.FirstName}','{person.MiddleName}')");         
             }
             return RedirectToAction("Index");
         }
+
+        public IActionResult SelectId()
+        {
+
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult SelectById(int? Id)
+        {
+            try
+            {
+                using (IDbConnection db = new SqlConnection(conString))
+                {
+                    var personListbyId = db.Query<Person>($"SELECT * FROM PERSON WHERE Id = '{Id}' ").ToList();
+                    return View(personListbyId);
+                }
+            }
+            catch
+            {
+
+            }
+            return View(null);
+
+        }
+
     }
 }

@@ -1,0 +1,25 @@
+﻿@model Leson2AspNetCoreMVC.Models.Person
+@{
+    ViewData["Title"] = "SelectID";
+}
+<h4 class="text-info">Search by ID</h4>
+<form method="post" action="~/Person/SelectById">
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="input-group">
+                <label for="Id">Choose Id</label><br />
+                <input asp-for="Id" type="number" class="form-control" placeholder="Поиск по Id" />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="input-group">
+                <input type="submit" class="btn btn-primary" value="Search" />
+            </div>
+        </div>
+    </div>
+</form>
+
+
