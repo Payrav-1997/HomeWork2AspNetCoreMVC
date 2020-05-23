@@ -1,0 +1,39 @@
+﻿@model Leson2AspNetCoreMVC.Models.Person
+@{
+    ViewData["Title"] = "Add Person";
+}
+
+<h4 class="text-info">Add</h4>
+<form method="post" action="~/css/site.css">
+<div class="row">
+    <div class="col-md-6">
+        <div class="input-group">
+            <label for="LastName">LastName</label><br />
+            <input asp-for="LastName" type="text" class="form-control"placeholder="Имя"/>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="input-group">
+            <label for="FirstName">FirstName</label><br />
+            <input asp-for="FirstName" type="text" class="form-control" placeholder="Фамилия" />
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="input-group">
+            <label for="MiddleName">MiddleName</label><br />
+            <input asp-for="MiddleName" type="text" class="form-control" placeholder="Отчесво" />
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="input-group">
+            <inputtype="submit" class="btn btn-primary" value="Save" />
+        </div>
+    </div>
+</div>
+</form>
